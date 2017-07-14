@@ -1,4 +1,10 @@
-class AddMissingUniqueIndices < ActiveRecord::Migration
+migration_superclass = if ActiveRecord::VERSION::MAJOR >= 5
+  ActiveRecord::Migration["#{ActiveRecord::VERSION::MAJOR}.#{ActiveRecord::VERSION::MINOR}"]
+else
+  ActiveRecord::Migration
+end
+
+class CreateCkeditorAssets < migration_superclass
   def self.up
     add_index :tags, :name, unique: true
 

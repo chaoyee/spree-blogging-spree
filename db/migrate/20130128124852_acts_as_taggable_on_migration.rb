@@ -1,4 +1,10 @@
-class ActsAsTaggableOnMigration < ActiveRecord::Migration
+migration_superclass = if ActiveRecord::VERSION::MAJOR >= 5
+  ActiveRecord::Migration["#{ActiveRecord::VERSION::MAJOR}.#{ActiveRecord::VERSION::MINOR}"]
+else
+  ActiveRecord::Migration
+end
+
+class CreateCkeditorAssets < migration_superclass
   def self.up
     create_table :tags do |t|
       t.string :name

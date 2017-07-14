@@ -1,4 +1,10 @@
-class CreateBlogEntries < ActiveRecord::Migration
+migration_superclass = if ActiveRecord::VERSION::MAJOR >= 5
+  ActiveRecord::Migration["#{ActiveRecord::VERSION::MAJOR}.#{ActiveRecord::VERSION::MINOR}"]
+else
+  ActiveRecord::Migration
+end
+
+class CreateCkeditorAssets < migration_superclass
   def self.up
     create_table :spree_blog_entries do |t|
       t.column :title, :string

@@ -5,7 +5,7 @@ SpreeBloggingSpree
 
 A basic blogging solution for use with the [Spree](http://github.com/spree/spree/) E-Commerce platform.
 
-The blog is found under /blog on the website font end. Blog entries have fields for title, body, summary, date published, and author. Each blog entry can also have categories and tags associated with it. 
+The blog is found under /blog on the website font end. Blog entries have fields for title, body, summary, date published, and author. Each blog entry can also have categories and tags associated with it.
 
 The [Spree Editor](http://github.com/spree/spree_editor/) extension can be used to provide a rich text experience when editing the body of a blog entry.
 
@@ -38,8 +38,8 @@ Bundle your dependencies and run the installation generator:
 
 ```shell
     bundle install
-    rake railties:install:migrations
-    rake db:migrate
+    bundle exec rails g spree_blogging_spree:install
+    bundle exec rake db:migrate
 ```
 
 Testing
