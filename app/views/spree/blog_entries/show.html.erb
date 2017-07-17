@@ -14,6 +14,7 @@
     <h1><%= @blog_entry.title %></h1>
 
     <div class="blog_entry_body">
+      <%= image_tag @blog_entry.blog_entry_image.attachment.url('large'), class: 'thumbnail' if @blog_entry.blog_entry_image %>
       <%== @blog_entry.body %>
     </div>
 

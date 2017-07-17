@@ -8,11 +8,11 @@ class Spree::BlogEntry < ActiveRecord::Base
   validates_presence_of :body
 
   default_scope { order("published_at DESC") }
-  scope :visible, -> { where :visible => true }
+  scope :visible, -> { where visible: true }
   scope :recent, lambda{|max=5| visible.limit(max) }
 
   if Spree.user_class
-    belongs_to :author, :class_name => Spree.user_class.to_s
+    belongs_to :author, class_name: Spree.user_class.to_s
   else
     belongs_to :author
   end
@@ -34,9 +34,8 @@ class Spree::BlogEntry < ActiveRecord::Base
       period = keys.first.to_s
       date = DateTime.new(*keys.reverse.map {|key| date[key].to_i })
     end
-
     time = date.to_time.in_time_zone
-    where(:published_at => (time.send("beginning_of_#{period}")..time.send("end_of_#{period}")) )
+    where( published_at: (time.send("beginning_of_#{period}")..time.send("end_of_#{period}")))
   end
 
   def self.by_tag(tag_name)

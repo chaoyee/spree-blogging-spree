@@ -1,6 +1,6 @@
 if Spree.user_class
   Spree.user_class.class_eval do
-    has_many :blog_entries, :foreign_key => :author_id
+    has_many :blog_entries, foreign_key: :author_id
   end
 end
 
